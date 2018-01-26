@@ -12,6 +12,7 @@ spec:
   selector:
     app: apidemo-app
     tier: apidemo-app
+  type: LoadBalancer
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
