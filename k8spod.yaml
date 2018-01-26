@@ -1,21 +1,36 @@
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+apiVersion: v1
+kind: Service
+metadata:
+  name: apidemo-app
+  labels:
+    app: apidemo-app
+    tier: apidemo-app
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: apidemo-app
+    tier: apidemo-app
+---
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: apidemo-deployment
+  name: apidemo-app
   labels:
     app: apidemo
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: apidemo
+  replicas: 5
   template:
     metadata:
       labels:
-        app: apidemo
+        app: apidemo-app
+        tier: apidemo-app
     spec:
       containers:
       - name: apidemo
         image: gcr.io/copper-imprint-193208/helloapidemo
         ports:
-        - containerPort: 80          
+        - containerPort: 80 
+
+   
