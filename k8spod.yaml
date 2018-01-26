@@ -1,0 +1,21 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: apidemo-deployment
+  labels:
+    app: apidemo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: apidemo
+  template:
+    metadata:
+      labels:
+        app: apidemo
+    spec:
+      containers:
+      - name: apidemo
+        image: gcr.io/copper-imprint-193208/helloapidemo
+        ports:
+        - containerPort: 80          
