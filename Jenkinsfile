@@ -8,8 +8,8 @@ node{
     checkout scm
 
     stage 'Build Docker'
-    sh("docker build -t ${imgWithTag} .")
+    powershell("docker build -t ${imgWithTag} .")
 
     stage 'Push Docker'
-    sh("gcloud docker -- push ${imgWithTag} ")
+    powershell("gcloud docker -- push ${imgWithTag} ")
 }
