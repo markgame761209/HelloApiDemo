@@ -7,9 +7,9 @@ node{
     
     checkout scm
 
-    stage '建立映像檔'
+    stage 'Build Docker'
     sh("docker build -t ${imgWithTag} .")
 
-    stage '放置映像檔'
+    stage 'Push Docker'
     sh("gcloud docker -- push ${imgWithTag} ")
 }
